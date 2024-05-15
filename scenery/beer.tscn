@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://df5xkgyy81scs"]
+
+[ext_resource type="Texture2D" uid="uid://bpbcybexswx6f" path="res://scenery/beer-bottle-png-12.png" id="1_h0bf7"]
+[ext_resource type="Script" path="res://scenery/destructible.gd" id="2_ge1i3"]
+
+[node name="Beer" type="RigidBody2D"]
+center_of_mass_mode = 1
+center_of_mass = Vector2(82.5, 220.25)
+continuous_cd = 2
+max_contacts_reported = 50
+contact_monitor = true
+can_sleep = false
+script = ExtResource("2_ge1i3")
+minImpulse = 750.0
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("1_h0bf7")
+polygon = PackedVector2Array(706.667, 146.667, 693.333, 186.667, 722.7, 313, 699, 327.6, 787.6, 912, 824.1, 1004, 986.667, 1280, 960, 1986.67, 944.1, 2459.4, 980, 2593.33, 913.333, 2820, 193.333, 2820, 117.7, 2583, 166.667, 2460, 146.667, 1933.33, 113.333, 1273.33, 270, 1011, 308, 930, 400.7, 330.1, 377, 313.6, 406.667, 186.667, 393.333, 146.667, 412, 118, 681, 118)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+scale = Vector2(0.15, 0.15)
+polygon = PackedVector2Array(706.667, 146.667, 693.333, 186.667, 722.7, 313, 699, 327.6, 787.6, 912, 824.1, 1004, 986.667, 1280, 960, 1986.67, 944.1, 2459.4, 980, 2593.33, 913.333, 2820, 193.333, 2820, 117.7, 2583, 166.667, 2460, 146.667, 1933.33, 113.333, 1273.33, 270, 1011, 308, 930, 400.7, 330.1, 377, 313.6, 406.667, 186.667, 393.333, 146.667, 412, 118, 681, 118)

@@ -1,0 +1,20 @@
+[gd_scene load_steps=5 format=3 uid="uid://b3do053hjw4au"]
+
+[ext_resource type="PackedScene" uid="uid://cqqe4cltg1k37" path="res://ui/ball_counter.tscn" id="1_g017a"]
+[ext_resource type="PackedScene" uid="uid://undx6ukd8s8e" path="res://ui/pin_counter.tscn" id="2_nq111"]
+[ext_resource type="PackedScene" uid="uid://13jjd86313j1" path="res://ui/next_level_button.tscn" id="3_47pr3"]
+[ext_resource type="PackedScene" uid="uid://dnwpm7a3qxmyd" path="res://ui/kill_overlay.tscn" id="4_a6yci"]
+
+[node name="Interface" type="CanvasLayer"]
+
+[node name="PinCounter" parent="." instance=ExtResource("2_nq111")]
+
+[node name="KillOverlay" parent="." instance=ExtResource("4_a6yci")]
+
+[node name="NextLevelButton" parent="." instance=ExtResource("3_47pr3")]
+
+[node name="BallCounter" parent="." instance=ExtResource("1_g017a")]
+offset_left = 6.0
+offset_top = 4.0
+offset_right = 46.0
+offset_bottom = 44.0

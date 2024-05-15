@@ -1,0 +1,93 @@
+[gd_scene load_steps=13 format=3 uid="uid://b5dqmyvkqb2mk"]
+
+[ext_resource type="Script" path="res://effects/BloodFountain.gd" id="1_e7ni5"]
+[ext_resource type="Texture2D" uid="uid://cim3b0el5dsmn" path="res://effects/Blood-Download-PNG-585739243.png" id="2_1y0q0"]
+
+[sub_resource type="Gradient" id="Gradient_du7tp"]
+colors = PackedColorArray(1, 1, 1, 0.788235, 1, 1, 1, 0.454902)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_300wa"]
+gradient = SubResource("Gradient_du7tp")
+
+[sub_resource type="Curve" id="Curve_auhed"]
+min_value = 0.2
+_data = [Vector2(0, 0.2), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_asq37"]
+curve = SubResource("Curve_auhed")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_xqtl0"]
+particle_flag_disable_z = true
+spread = 0.0
+gravity = Vector3(0, 100, 0)
+initial_velocity_min = 200.0
+initial_velocity_max = 250.0
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+angle_max = 360.0
+scale_min = 0.1
+scale_max = 0.2
+scale_curve = SubResource("CurveTexture_asq37")
+color_ramp = SubResource("GradientTexture1D_300wa")
+
+[sub_resource type="Gradient" id="Gradient_s02bv"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_gsjbg"]
+gradient = SubResource("Gradient_s02bv")
+
+[sub_resource type="Curve" id="Curve_ou7lm"]
+min_value = 0.2
+_data = [Vector2(0, 0.2), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_64g85"]
+curve = SubResource("Curve_ou7lm")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_77b7j"]
+particle_flag_disable_z = true
+spread = 0.0
+gravity = Vector3(0, 100, 0)
+initial_velocity_min = 150.0
+initial_velocity_max = 200.0
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+angle_max = 360.0
+scale_min = 0.05
+scale_max = 0.1
+scale_curve = SubResource("CurveTexture_64g85")
+color_ramp = SubResource("GradientTexture1D_gsjbg")
+
+[node name="BloodFountain" type="Node2D"]
+z_index = -5
+script = ExtResource("1_e7ni5")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+amount = 32
+process_material = SubResource("ParticleProcessMaterial_xqtl0")
+texture = ExtResource("2_1y0q0")
+lifetime = 1.5
+fixed_fps = 60
+
+[node name="GPUParticles2D2" type="GPUParticles2D" parent="."]
+visible = false
+amount = 32
+process_material = SubResource("ParticleProcessMaterial_77b7j")
+texture = ExtResource("2_1y0q0")
+lifetime = 1.5
+preprocess = 1.5
+fixed_fps = 60
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+autostart = true
+
+[node name="Timer2" type="Timer" parent="."]
+wait_time = 7.0
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="Timer2" to="." method="_on_timer_2_timeout"]

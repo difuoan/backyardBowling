@@ -1,0 +1,31 @@
+[gd_scene load_steps=4 format=3 uid="uid://cqqe4cltg1k37"]
+
+[ext_resource type="Script" path="res://ui/ball_counter.gd" id="1_n30x4"]
+[ext_resource type="Texture2D" uid="uid://c6q0kmpq7qhj7" path="res://ball/bowling-ball-png-hd-orange-transparent-png-sticker-3715-3768462855.png" id="2_73ymb"]
+
+[sub_resource type="SystemFont" id="SystemFont_42r1y"]
+font_names = PackedStringArray("Segoe Script")
+
+[node name="BallCounter" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(0.00387596, 0.00387596)
+script = ExtResource("1_n30x4")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(1.31952, 1.31952)
+texture = ExtResource("2_73ymb")
+centered = false
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 5934.0
+offset_top = -774.002
+offset_right = 19350.0
+offset_bottom = 5717.0
+theme_override_colors/font_color = Color(0.670588, 0, 0, 1)
+theme_override_fonts/font = SubResource("SystemFont_42r1y")
+theme_override_font_sizes/font_size = 4096
+text = "1"

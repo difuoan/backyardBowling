@@ -1,0 +1,43 @@
+[gd_scene load_steps=7 format=3 uid="uid://dckk6sbjqpphn"]
+
+[ext_resource type="Script" path="res://ball/bowling_ball.gd" id="1_xycal"]
+[ext_resource type="Texture2D" uid="uid://c6q0kmpq7qhj7" path="res://ball/bowling-ball-png-hd-orange-transparent-png-sticker-3715-3768462855.png" id="2_glxoc"]
+[ext_resource type="Material" uid="uid://bivw4uv7uucn1" path="res://effects/maskMaterial.tres" id="3_c2viq"]
+[ext_resource type="Texture2D" uid="uid://di3i2q3bxs0ag" path="res://ball/ballWhite.png" id="3_trc3s"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_orvs1"]
+radius = 1810.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_idvuh"]
+radius = 187.011
+
+[node name="BowlingBall" type="RigidBody2D"]
+collision_layer = 3
+collision_mask = 3
+mass = 6.5
+can_sleep = false
+script = ExtResource("1_xycal")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("2_glxoc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(0.1, 0.1)
+shape = SubResource("CircleShape2D_orvs1")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_idvuh")
+
+[node name="CanvasGroup" type="CanvasGroup" parent="."]
+
+[node name="Masked" type="Node2D" parent="CanvasGroup"]
+
+[node name="Mask" type="Sprite2D" parent="CanvasGroup"]
+material = ExtResource("3_c2viq")
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("3_trc3s")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

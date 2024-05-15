@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3 uid="uid://cx4b6ehgx5xum"]
+
+[ext_resource type="Texture2D" uid="uid://hwi4lvno5cnu" path="res://effects/tse2.mm-removebg-preview.png" id="1_g0imy"]
+[ext_resource type="Script" path="res://effects/StrikeIndicator.gd" id="2_a8c21"]
+
+[node name="StrikeIndicator" type="Sprite2D"]
+z_index = -15
+rotation = -0.1309
+texture = ExtResource("1_g0imy")
+script = ExtResource("2_a8c21")
+
+[node name="Label" type="Label" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -449.5
+offset_top = -332.5
+offset_right = -24.5
+offset_bottom = -164.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_font_sizes/font_size = 120
+text = "STRIKE!"

@@ -1,0 +1,32 @@
+[gd_scene load_steps=4 format=3 uid="uid://cqibpbcprop0y"]
+
+[ext_resource type="Script" path="res://ui/pin_counter_item.gd" id="1_8y83b"]
+[ext_resource type="Texture2D" uid="uid://xnjur5dqtm2h" path="res://pin/3d-icon-illustration-pin-bowling-free-png-1317876159.png" id="1_ufmpw"]
+[ext_resource type="Texture2D" uid="uid://b2is02dm5c436" path="res://ui/crossedOut.png" id="2_buep8"]
+
+[node name="PinCounterItem" type="Control"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 30.0
+offset_bottom = 30.0
+script = ExtResource("1_8y83b")
+
+[node name="PinTexture" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(30, 30)
+offset_right = 25.0
+offset_bottom = 25.0
+pivot_offset = Vector2(13, 15)
+texture = ExtResource("1_ufmpw")
+expand_mode = 5
+
+[node name="CrossTexture" type="TextureRect" parent="PinTexture"]
+layout_mode = 0
+offset_left = -1.0
+offset_top = -22.0
+offset_right = 49.0
+offset_bottom = 28.0
+scale = Vector2(0.569028, 0.569028)
+pivot_offset = Vector2(14, 38)
+texture = ExtResource("2_buep8")
+expand_mode = 5

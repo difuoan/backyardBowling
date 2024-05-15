@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://dnwpm7a3qxmyd"]
+
+[ext_resource type="Texture2D" uid="uid://cim3b0el5dsmn" path="res://effects/Blood-Download-PNG-585739243.png" id="1_gx3ly"]
+[ext_resource type="Script" path="res://ui/KillOverlay.gd" id="2_3vta6"]
+
+[node name="KillOverlay" type="TextureRect"]
+offset_left = -646.0
+offset_top = -913.0
+offset_right = 1208.0
+offset_bottom = 1342.0
+rotation = 0.745178
+scale = Vector2(1.13931, 1.13931)
+pivot_offset = Vector2(1030.76, 1670.55)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("1_gx3ly")
+script = ExtResource("2_3vta6")

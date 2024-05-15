@@ -1,0 +1,75 @@
+[gd_scene load_steps=13 format=3 uid="uid://ce0ijynvt168b"]
+
+[ext_resource type="Script" path="res://levels/level.gd" id="1_wpwwk"]
+[ext_resource type="PackedScene" uid="uid://bdq4pguwjdjwb" path="res://ui/interface.tscn" id="2_xbxmn"]
+[ext_resource type="PackedScene" uid="uid://cnladn1nub7hi" path="res://pin/bowling_pin.tscn" id="3_a8xra"]
+[ext_resource type="PackedScene" uid="uid://dckk6sbjqpphn" path="res://ball/bowling_ball.tscn" id="4_x1hak"]
+[ext_resource type="Script" path="res://levels/Background.gd" id="5_udytf"]
+[ext_resource type="Texture2D" uid="uid://cavoy28nrfmm5" path="res://levels/1/bowling_range_pixelated.png" id="6_13cap"]
+[ext_resource type="PackedScene" uid="uid://droyil2h36vr5" path="res://ui/level_camera.tscn" id="8_xu1bx"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y2wqj"]
+size = Vector2(10695, 1230)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n2cww"]
+size = Vector2(2200, 4768)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y0wko"]
+size = Vector2(1149, 5243)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lxcse"]
+size = Vector2(10210, 1822)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vlp20"]
+radius = 342.0
+height = 1002.0
+
+[node name="Level1" type="Node2D"]
+script = ExtResource("1_wpwwk")
+
+[node name="Interface" parent="." instance=ExtResource("2_xbxmn")]
+
+[node name="BowlingPin" parent="." instance=ExtResource("3_a8xra")]
+position = Vector2(2181, 1316)
+rotation = -6.28318
+
+[node name="BowlingBall" parent="." instance=ExtResource("4_x1hak")]
+position = Vector2(-3691, 1993)
+
+[node name="Background" type="StaticBody2D" parent="."]
+z_index = -20
+position = Vector2(0, 1121)
+script = ExtResource("5_udytf")
+
+[node name="Sprite2D" type="Sprite2D" parent="Background"]
+position = Vector2(0, -129.5)
+scale = Vector2(5, 3.678)
+texture = ExtResource("6_13cap")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Background"]
+position = Vector2(-124.5, 1668)
+shape = SubResource("RectangleShape2D_y2wqj")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Background"]
+position = Vector2(5048, -326)
+shape = SubResource("RectangleShape2D_n2cww")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Background"]
+position = Vector2(-5067.5, -778.5)
+shape = SubResource("RectangleShape2D_y0wko")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Background"]
+position = Vector2(-367, -2489)
+shape = SubResource("RectangleShape2D_lxcse")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="Background"]
+position = Vector2(-1754, 1157)
+shape = SubResource("CapsuleShape2D_vlp20")
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="Background"]
+position = Vector2(4204, 1157)
+shape = SubResource("CapsuleShape2D_vlp20")
+
+[node name="LevelCamera" parent="." instance=ExtResource("8_xu1bx")]
+position = Vector2(-158, 950)
+zoom = Vector2(0.128, 0.128)

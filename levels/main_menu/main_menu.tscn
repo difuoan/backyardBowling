@@ -1,0 +1,69 @@
+[gd_scene load_steps=7 format=3 uid="uid://bo0ficgx1633q"]
+
+[ext_resource type="Texture2D" uid="uid://dmnw1tkeorljg" path="res://levels/main_menu/DALL·E 2024-04-27 17.44.19 - A hauntingly atmospheric main menu screen for a video game set in a deserted bowling alley where a mass murder occurred. The scene depicts an eerie, d.webp" id="1_3hupc"]
+[ext_resource type="Script" path="res://levels/main_menu/main_menu.gd" id="1_50uic"]
+[ext_resource type="AudioStream" uid="uid://bvfdlpoxa8dut" path="res://sound/Bowling sound effects ultimate collection.mp3" id="2_ipvgo"]
+[ext_resource type="Script" path="res://levels/main_menu/mainMenuCameraTarget.gd" id="2_knek6"]
+[ext_resource type="PackedScene" uid="uid://c5qwj2f2jgum2" path="res://levels/monologues/monologue_1.tscn" id="2_ldc1m"]
+[ext_resource type="Script" path="res://levels/level_camera.gd" id="4_qmnwt"]
+
+[node name="MainMenu" type="Node2D"]
+script = ExtResource("1_50uic")
+firstLevel = ExtResource("2_ldc1m")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -896.0
+offset_top = -512.0
+offset_right = 896.0
+offset_bottom = 512.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(896, 512)
+texture = ExtResource("1_3hupc")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -48.0
+offset_top = -56.5
+offset_right = 48.0
+offset_bottom = 56.5
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(48, 56)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 10
+script = ExtResource("2_knek6")
+
+[node name="NewGameButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "New Game"
+
+[node name="LoadGameButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Load Game"
+
+[node name="Options" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Options"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_ipvgo")
+autoplay = true
+
+[node name="Camera2D" type="Camera2D" parent="."]
+script = ExtResource("4_qmnwt")
+followDistance = 0.25
+
+[connection signal="button_up" from="VBoxContainer/NewGameButton" to="." method="_on_new_game_button_button_up"]
+[connection signal="button_up" from="VBoxContainer/LoadGameButton" to="." method="_on_load_game_button_button_up"]
+[connection signal="button_up" from="VBoxContainer/Options" to="." method="_on_options_button_up"]

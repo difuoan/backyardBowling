@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://bmsslhao7urvc"]
+
+[ext_resource type="Script" path="res://scenery/destructible.gd" id="1_dar1y"]
+[ext_resource type="Texture2D" uid="uid://c6j0hhgdplwch" path="res://scenery/www.pngall.png" id="2_j7wll"]
+
+[node name="Table" type="RigidBody2D"]
+mass = 20.0
+center_of_mass_mode = 1
+center_of_mass = Vector2(377, 266)
+continuous_cd = 2
+max_contacts_reported = 50
+contact_monitor = true
+can_sleep = false
+script = ExtResource("1_dar1y")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+scale = Vector2(2.25, 2.25)
+polygon = PackedVector2Array(656.889, 109.333, 699.556, 159.556, 699.556, 263.111, 699.556, 428, 689.333, 428, 648, 343.556, 648, 169.333, 382.222, 169.333, 115.111, 169.333, 115.111, 343.556, 72.2, 428, 60.8889, 428, 60.889, 264.444, 60.889, 159.556, 105.333, 109.333, 380.889, 109.333)
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+scale = Vector2(2.25, 2.25)
+texture = ExtResource("2_j7wll")
+polygon = PackedVector2Array(656.889, 109.333, 699.556, 159.556, 699.556, 263.111, 699.556, 428, 689.333, 428, 648, 343.556, 648, 169.333, 382.222, 169.333, 115.111, 169.333, 115.111, 343.556, 72.2, 428, 60.8889, 428, 60.889, 264.444, 60.889, 159.556, 105.333, 109.333, 380.889, 109.333)

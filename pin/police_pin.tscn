@@ -1,0 +1,656 @@
+[gd_scene load_steps=38 format=3 uid="uid://d0yje34o5stev"]
+
+[ext_resource type="Texture2D" uid="uid://xnjur5dqtm2h" path="res://pin/3d-icon-illustration-pin-bowling-free-png-1317876159.png" id="1_aft0d"]
+[ext_resource type="Script" path="res://pin/police_pin.gd" id="1_pga4g"]
+[ext_resource type="Material" uid="uid://bivw4uv7uucn1" path="res://effects/maskMaterial.tres" id="2_iniwe"]
+[ext_resource type="Texture2D" uid="uid://cvh27fgvfpeo2" path="res://pin/pin_mask.png" id="3_a1g7c"]
+[ext_resource type="Texture2D" uid="uid://2370v71yy3cx" path="res://pin/emotions/calm.png" id="4_1b1x0"]
+[ext_resource type="Texture2D" uid="uid://jcrw5wu2iopt" path="res://pin/emotions/angry.png" id="5_3lsy3"]
+[ext_resource type="Texture2D" uid="uid://byfnushau2alm" path="res://pin/emotions/jaded.png" id="5_5gp7r"]
+[ext_resource type="Texture2D" uid="uid://ckr3jyhk8ubgl" path="res://pin/emotions/horrified.png" id="6_tergh"]
+[ext_resource type="Texture2D" uid="uid://ncac5n154axw" path="res://pin/emotions/sceptical.png" id="7_5sh6i"]
+[ext_resource type="Texture2D" uid="uid://c1ns5qh4iuhol" path="res://pin/emotions/mean.png" id="7_unaaa"]
+[ext_resource type="Texture2D" uid="uid://16pojryy3tlo" path="res://pin/emotions/dead.png" id="8_pjsmq"]
+[ext_resource type="Texture2D" uid="uid://buleff80f4fru" path="res://pin/gun.png" id="9_4isod"]
+[ext_resource type="Texture2D" uid="uid://di3i2q3bxs0ag" path="res://ball/ballWhite.png" id="13_o03lw"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_xj3ys"]
+animation = &"dead"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_k1wxf"]
+animation = &"horror"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_01tnf"]
+animation = &"idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_8pr64"]
+animation = &"pain"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_htif5"]
+animation = &"sceptical"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_p1758"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_cbsin"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_c55lr"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_aso2l"]
+switch_mode = 2
+advance_mode = 2
+advance_condition = &"isNotDead"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_oity6"]
+switch_mode = 2
+advance_mode = 2
+advance_condition = &"isDead"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_0aqof"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_j3yqy"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_bjpal"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_y3c72"]
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_wr3kb"]
+states/End/position = Vector2(701, 100)
+states/Start/position = Vector2(167, 100)
+states/dead/node = SubResource("AnimationNodeAnimation_xj3ys")
+states/dead/position = Vector2(701, -10)
+states/horror/node = SubResource("AnimationNodeAnimation_k1wxf")
+states/horror/position = Vector2(545, 100)
+states/idle/node = SubResource("AnimationNodeAnimation_01tnf")
+states/idle/position = Vector2(318, 100)
+states/pain/node = SubResource("AnimationNodeAnimation_8pr64")
+states/pain/position = Vector2(545, -10)
+states/sceptical/node = SubResource("AnimationNodeAnimation_htif5")
+states/sceptical/position = Vector2(318, -10)
+transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_p1758"), "idle", "pain", SubResource("AnimationNodeStateMachineTransition_cbsin"), "idle", "horror", SubResource("AnimationNodeStateMachineTransition_c55lr"), "pain", "horror", SubResource("AnimationNodeStateMachineTransition_aso2l"), "pain", "dead", SubResource("AnimationNodeStateMachineTransition_oity6"), "horror", "pain", SubResource("AnimationNodeStateMachineTransition_0aqof"), "idle", "sceptical", SubResource("AnimationNodeStateMachineTransition_j3yqy"), "sceptical", "pain", SubResource("AnimationNodeStateMachineTransition_bjpal"), "sceptical", "horror", SubResource("AnimationNodeStateMachineTransition_y3c72")]
+graph_offset = Vector2(-51, -50)
+
+[sub_resource type="Animation" id="Animation_54eg7"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("IdleExpression:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(38, -672)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("IdleExpression:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PainExpression:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("HorrifiedExpression:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("HorrifiedExpression:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(38, -693)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("HorrifiedExpression:flip_h")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("DeadExpression:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("ScepticalExpression:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_cx1xw"]
+resource_name = "dead"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("IdleExpression:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PainExpression:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("HorrifiedExpression:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("DeadExpression:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("ScepticalExpression:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_mt6l6"]
+resource_name = "horror"
+length = 4.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("IdleExpression:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PainExpression:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("HorrifiedExpression:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("HorrifiedExpression:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.9, 1.8, 2, 2.9, 3.8, 4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(38, -908.484), Vector2(38, -918.484), Vector2(38, -908.484), Vector2(-22, -908.484), Vector2(-22, -918.484), Vector2(-22, -908.484), Vector2(38, -908.484)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("HorrifiedExpression:flip_h")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 1.9, 3.9),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("DeadExpression:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("ScepticalExpression:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_yuqpu"]
+resource_name = "idle"
+length = 4.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("IdleExpression:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PainExpression:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("HorrifiedExpression:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("IdleExpression:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.9, 1.8, 2, 2.9, 3.8, 4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(38, -908.484), Vector2(38, -918.484), Vector2(38, -908.484), Vector2(-22, -908.484), Vector2(-22, -918.484), Vector2(-22, -908.484), Vector2(38, -908.484)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("IdleExpression:flip_h")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 1.9, 3.9),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("ScepticalExpression:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_tcm5k"]
+resource_name = "pain"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("IdleExpression:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PainExpression:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("HorrifiedExpression:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("ScepticalExpression:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_6wi51"]
+resource_name = "sceptical"
+length = 4.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("IdleExpression:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PainExpression:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("HorrifiedExpression:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("ScepticalExpression:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.9, 1.8, 2, 2.9, 3.8, 4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(38, -908.484), Vector2(38, -918.484), Vector2(38, -908.484), Vector2(-22, -908.484), Vector2(-22, -918.484), Vector2(-22, -908.484), Vector2(38, -908.484)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("ScepticalExpression:flip_h")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 1.9, 3.9),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("ScepticalExpression:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_m2fkm"]
+_data = {
+"RESET": SubResource("Animation_54eg7"),
+"dead": SubResource("Animation_cx1xw"),
+"horror": SubResource("Animation_mt6l6"),
+"idle": SubResource("Animation_yuqpu"),
+"pain": SubResource("Animation_tcm5k"),
+"sceptical": SubResource("Animation_6wi51")
+}
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jf0kf"]
+radius = 618.0
+height = 2036.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kafko"]
+radius = 1592.0
+height = 8510.0
+
+[node name="PolicePin" type="RigidBody2D"]
+mass = 90.0
+continuous_cd = 2
+max_contacts_reported = 50
+contact_monitor = true
+can_sleep = false
+script = ExtResource("1_pga4g")
+idleExpression = ExtResource("5_5gp7r")
+horrifiedExpression = ExtResource("7_unaaa")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -215.484)
+scale = Vector2(0.9, 0.9)
+texture = ExtResource("1_aft0d")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+position = Vector2(0, -215.484)
+scale = Vector2(0.9, 0.9)
+polygon = PackedVector2Array(17, -954.8, 41, -950.5, 65, -942.1, 96, -922.9, 111, -906.7, 130, -880.5, 138, -861.3, 150, -818, 157, -775.2, 157, -727.9, 154.8, -713, 145.5, -652, 111, -507, 111, -498, 109.1, -436, 111.9, -407, 121.7, -355, 150.5, -249, 169.4, -194, 243, 1.70001, 280, 116, 299, 197.6, 312, 277, 316, 325.9, 314.9, 387, 308.8, 473, 295.7, 563, 283.5, 619, 257.4, 712, 222.2, 797, 185.1, 869, 147.9, 922, 132.5, 934, 117.1, 941, 71.2, 952, 60, 953.333, -56.6667, 953.333, -92, 947.6, -122, 939.2, -140, 928.9, -157, 910.7, -176, 883.5, -218, 805.3, -258, 710.3, -285, 612.4, -302, 524, -315, 410.1, -313.8, 300, -304.7, 226, -287.5, 146, -269.4, 80, -242.4, 0, -147, -260.4, -122, -353, -110, -422.4, -110, -434, -109, -486, -112.8, -518, -119.7, -551, -144, -644.6, -155, -715, -155.8, -777, -150.5, -816, -132.3, -876, -125, -889, -108.8, -910, -87.6, -929, -60.4, -944, -34.3, -952, -17, -954.7)
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource("AnimationNodeStateMachine_wr3kb")
+anim_player = NodePath("../AnimationPlayer")
+parameters/conditions/isDead = false
+parameters/conditions/isNotDead = false
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_m2fkm")
+}
+
+[node name="CanvasGroup" type="CanvasGroup" parent="."]
+
+[node name="Masked" type="Node2D" parent="CanvasGroup"]
+
+[node name="Mask" type="Sprite2D" parent="CanvasGroup"]
+material = ExtResource("2_iniwe")
+position = Vector2(0, -215.484)
+scale = Vector2(0.9, 0.9)
+texture = ExtResource("3_a1g7c")
+
+[node name="IdleExpression" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(38, -672)
+scale = Vector2(4.1129, 4.1129)
+texture = ExtResource("4_1b1x0")
+
+[node name="PainExpression" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(38, -908.484)
+scale = Vector2(4.1129, 4.1129)
+texture = ExtResource("5_3lsy3")
+
+[node name="HorrifiedExpression" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(38, -693)
+scale = Vector2(4.1129, 4.1129)
+texture = ExtResource("6_tergh")
+
+[node name="ScepticalExpression" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(38, -908.484)
+scale = Vector2(4.1129, 4.1129)
+texture = ExtResource("7_5sh6i")
+
+[node name="DeadExpression" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(38, -908.484)
+scale = Vector2(4.1129, 4.1129)
+texture = ExtResource("8_pjsmq")
+
+[node name="Gun" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(0, 2.77556e-17)
+rotation = 1.5708
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("9_4isod")
+offset = Vector2(6550, 0)
+
+[node name="Muzzle" type="Node2D" parent="Gun"]
+position = Vector2(8166.67, -346.668)
+
+[node name="Hand" type="Sprite2D" parent="Gun"]
+position = Vector2(6550, 0)
+scale = Vector2(0.263987, 0.263987)
+texture = ExtResource("13_o03lw")
+offset = Vector2(-2500, 1000)
+
+[node name="HorrifiedArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HorrifiedArea"]
+position = Vector2(0, -792)
+rotation = -1.57079
+shape = SubResource("CapsuleShape2D_jf0kf")
+
+[node name="ScepticalArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ScepticalArea"]
+position = Vector2(0, -827)
+rotation = -1.57079
+shape = SubResource("CapsuleShape2D_kafko")
+
+[node name="GunTimer" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true
+
+[connection signal="body_entered" from="HorrifiedArea" to="." method="_on_horrified_area_body_entered"]
+[connection signal="body_entered" from="ScepticalArea" to="." method="_on_sceptical_area_body_entered"]
+[connection signal="timeout" from="GunTimer" to="." method="_on_gun_timer_timeout"]

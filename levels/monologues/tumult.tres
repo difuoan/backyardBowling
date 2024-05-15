@@ -1,0 +1,4 @@
+[gd_resource type="SystemFont" format=3 uid="uid://b4sqlnkqfls4h"]
+
+[resource]
+font_names = PackedStringArray("Tumult")

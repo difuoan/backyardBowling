@@ -1,0 +1,4 @@
+[gd_resource type="SystemFont" format=3 uid="uid://80xw73r8alkm"]
+
+[resource]
+font_names = PackedStringArray("BPSHC")

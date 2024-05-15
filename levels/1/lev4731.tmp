@@ -1,0 +1,162 @@
+[gd_scene load_steps=19 format=3 uid="uid://do5fuqb4cvmoi"]
+
+[ext_resource type="Script" path="res://levels/level.gd" id="1_wpwwk"]
+[ext_resource type="PackedScene" uid="uid://b3do053hjw4au" path="res://ui/interface.tscn" id="2_xbxmn"]
+[ext_resource type="Texture2D" uid="uid://btc6k6iuaing3" path="res://pin/emotions/surprised.png" id="4_iakij"]
+[ext_resource type="PackedScene" uid="uid://dckk6sbjqpphn" path="res://ball/bowling_ball.tscn" id="4_x1hak"]
+[ext_resource type="Texture2D" uid="uid://cavoy28nrfmm5" path="res://levels/1/bowling_range_pixelated.png" id="6_13cap"]
+[ext_resource type="Script" path="res://levels/background.gd" id="7_uwri8"]
+[ext_resource type="AudioStream" uid="uid://bcelxwb03nfv8" path="res://sound/box.mp3" id="8_8gga4"]
+[ext_resource type="PackedScene" uid="uid://droyil2h36vr5" path="res://ui/level_camera.tscn" id="8_xu1bx"]
+[ext_resource type="AudioStream" uid="uid://pg322ckopdnp" path="res://sound/stick.mp3" id="9_gm3lq"]
+[ext_resource type="AudioStream" uid="uid://b82si8o5i461m" path="res://sound/bowlingSamba.mp3" id="11_nqroa"]
+[ext_resource type="PackedScene" uid="uid://df5xkgyy81scs" path="res://scenery/beer.tscn" id="12_22v3y"]
+[ext_resource type="PackedScene" uid="uid://cnladn1nub7hi" path="res://pin/bowling_pin.tscn" id="12_lshkk"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hfcy0"]
+size = Vector2(498, 480.5)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_13i33"]
+radius = 162.237
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lxcse"]
+size = Vector2(10210, 1822)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y0wko"]
+size = Vector2(1149, 5243)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n2cww"]
+size = Vector2(2200, 4768)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y2wqj"]
+size = Vector2(10589, 1230)
+
+[node name="Level1" type="Node2D"]
+script = ExtResource("1_wpwwk")
+
+[node name="Interface" parent="." instance=ExtResource("2_xbxmn")]
+
+[node name="LevelCamera" parent="." instance=ExtResource("8_xu1bx")]
+position = Vector2(-158, 950)
+zoom = Vector2(0.128, 0.128)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_nqroa")
+volume_db = -6.0
+autoplay = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = -30
+position = Vector2(0, 991.5)
+scale = Vector2(5, 3.678)
+texture = ExtResource("6_13cap")
+
+[node name="BowlingPin" parent="." instance=ExtResource("12_lshkk")]
+position = Vector2(2181, 1542)
+rotation = -6.28318
+idleExpression = ExtResource("4_iakij")
+
+[node name="BowlingBall" parent="." instance=ExtResource("4_x1hak")]
+position = Vector2(-3691, 2003)
+
+[node name="BowlingBallReturn" type="StaticBody2D" parent="."]
+z_index = -20
+position = Vector2(-1751, 1988)
+script = ExtResource("7_uwri8")
+hitSound = ExtResource("8_8gga4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BowlingBallReturn"]
+position = Vector2(14, 32)
+shape = SubResource("RectangleShape2D_hfcy0")
+
+[node name="BowlingBallReturn2" type="StaticBody2D" parent="."]
+z_index = -20
+position = Vector2(4194, 1997)
+script = ExtResource("7_uwri8")
+hitSound = ExtResource("8_8gga4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BowlingBallReturn2"]
+position = Vector2(-10, 32)
+shape = SubResource("RectangleShape2D_hfcy0")
+
+[node name="BowlingBallRack" type="StaticBody2D" parent="."]
+z_index = -20
+position = Vector2(-1949, 2204)
+script = ExtResource("7_uwri8")
+hitSound = ExtResource("9_gm3lq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BowlingBallRack"]
+position = Vector2(-9, 7)
+shape = SubResource("CircleShape2D_13i33")
+
+[node name="BowlingBallRack2" type="StaticBody2D" parent="."]
+z_index = -20
+position = Vector2(-1521, 2213)
+script = ExtResource("7_uwri8")
+hitSound = ExtResource("9_gm3lq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BowlingBallRack2"]
+position = Vector2(-18, 7)
+shape = SubResource("CircleShape2D_13i33")
+
+[node name="BowlingBallRack3" type="StaticBody2D" parent="."]
+z_index = -20
+position = Vector2(3974, 2213)
+script = ExtResource("7_uwri8")
+hitSound = ExtResource("9_gm3lq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BowlingBallRack3"]
+position = Vector2(0, -2)
+shape = SubResource("CircleShape2D_13i33")
+
+[node name="BowlingBallRack4" type="StaticBody2D" parent="."]
+z_index = -20
+position = Vector2(4425, 2222)
+script = ExtResource("7_uwri8")
+hitSound = ExtResource("9_gm3lq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BowlingBallRack4"]
+position = Vector2(-18, -2)
+shape = SubResource("CircleShape2D_13i33")
+
+[node name="Ceiling" type="StaticBody2D" parent="."]
+z_index = -20
+position = Vector2(0, -1379)
+script = ExtResource("7_uwri8")
+hitSound = ExtResource("8_8gga4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ceiling"]
+position = Vector2(-25, -466)
+shape = SubResource("RectangleShape2D_lxcse")
+
+[node name="WallLeft" type="StaticBody2D" parent="."]
+z_index = -20
+position = Vector2(-5280, 839)
+script = ExtResource("7_uwri8")
+hitSound = ExtResource("8_8gga4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WallLeft"]
+position = Vector2(-27, -591)
+shape = SubResource("RectangleShape2D_y0wko")
+
+[node name="WallRight" type="StaticBody2D" parent="."]
+z_index = -20
+position = Vector2(5271, 928)
+script = ExtResource("7_uwri8")
+hitSound = ExtResource("8_8gga4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WallRight"]
+position = Vector2(560, -192)
+shape = SubResource("RectangleShape2D_n2cww")
+
+[node name="Floor" type="StaticBody2D" parent="."]
+z_index = -20
+position = Vector2(76, 22318)
+script = ExtResource("7_uwri8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
+position = Vector2(-261, -19517)
+shape = SubResource("RectangleShape2D_y2wqj")
+
+[node name="Beer" parent="." instance=ExtResource("12_22v3y")]
+position = Vector2(-1838, -846)
