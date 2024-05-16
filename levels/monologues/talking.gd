@@ -17,6 +17,7 @@ extends RichTextLabel
 
 var originalText: String
 var skip: bool = false
+var levelComplete: bool = false
 
 func _ready():
 	originalText = text
@@ -38,9 +39,10 @@ func _ready():
 		await get_tree().create_timer(waitTime).timeout
 	audioPlayer.stop()
 	Global.onLevelComplete()
+	levelComplete = true
 
 func _input(event):
-	if skip: return
+	if skip or levelComplete: return
 	var isEcho: bool = event.is_echo()
 	var isLeftClick: bool = event.is_action("click_left")
 	var isReleased: bool = event.is_released()
@@ -50,3 +52,4 @@ func _input(event):
 	text = originalText
 	audioPlayer.stop()
 	Global.onLevelComplete()
+	levelComplete = true
