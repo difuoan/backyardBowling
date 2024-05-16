@@ -1,0 +1,147 @@
+[gd_scene load_steps=19 format=3 uid="uid://c5qwj2f2jgum2"]
+
+[ext_resource type="Script" path="res://levels/level.gd" id="1_bttvo"]
+[ext_resource type="PackedScene" uid="uid://do5fuqb4cvmoi" path="res://levels/1/level_1.tscn" id="2_12agv"]
+[ext_resource type="Texture2D" uid="uid://bb2e5u2u6srve" path="res://levels/monologues/Blue_Plastic_Texture_by_CozycomfycouchStock.png" id="3_cdfuu"]
+[ext_resource type="Texture2D" uid="uid://bw8cao4rlpfwy" path="res://levels/monologues/bowlSheet.png" id="4_2jesg"]
+[ext_resource type="Texture2D" uid="uid://0wacgymkxb03" path="res://levels/monologues/coaster1.png" id="5_bpwig"]
+[ext_resource type="Texture2D" uid="uid://bqkwakqglvdc8" path="res://levels/monologues/water_stain.png" id="6_31qwg"]
+[ext_resource type="Texture2D" uid="uid://c3qhq0sgjltbw" path="res://ui/paper.png" id="7_vyo78"]
+[ext_resource type="Script" path="res://levels/monologues/Paper.gd" id="8_omfvp"]
+[ext_resource type="Texture2D" uid="uid://c0kydl81thuba" path="res://levels/monologues/pen.png" id="9_q7tps"]
+[ext_resource type="Script" path="res://levels/monologues/appearAfterWriting.gd" id="10_iw04d"]
+[ext_resource type="AudioStream" uid="uid://d1falogaxb3bc" path="res://sound/penDrop.mp3" id="11_00eei"]
+[ext_resource type="Texture2D" uid="uid://bldryd8ywxw2k" path="res://levels/monologues/milkShake.png" id="12_ahx2s"]
+[ext_resource type="AudioStream" uid="uid://p5qknqgv6jvf" path="res://sound/drinking-coffe-107121.mp3" id="13_mxpit"]
+[ext_resource type="Script" path="res://levels/monologues/talking.gd" id="14_6v14i"]
+[ext_resource type="Script" path="res://levels/level_camera.gd" id="15_nf78t"]
+[ext_resource type="PackedScene" uid="uid://13jjd86313j1" path="res://ui/next_level_button.tscn" id="16_wlvvl"]
+[ext_resource type="AudioStream" uid="uid://bstc5ie3oj56a" path="res://sound/pen.mp3" id="17_f1q7p"]
+
+[sub_resource type="SystemFont" id="SystemFont_61q0o"]
+font_names = PackedStringArray("Segoe Script")
+
+[node name="Monologue1" type="Node2D"]
+script = ExtResource("1_bttvo")
+nextScene = ExtResource("2_12agv")
+
+[node name="Background" type="TextureRect" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -3791.0
+offset_top = -2404.0
+offset_right = 3791.0
+offset_bottom = 2404.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_cdfuu")
+
+[node name="BowlSheet" type="Sprite2D" parent="."]
+position = Vector2(-355, -361)
+rotation = 0.572577
+scale = Vector2(0.392213, 0.392213)
+texture = ExtResource("4_2jesg")
+
+[node name="Coaster1" type="Sprite2D" parent="."]
+position = Vector2(543, -305)
+rotation = 0.218775
+scale = Vector2(0.407025, 0.407025)
+texture = ExtResource("5_bpwig")
+
+[node name="WaterStain" type="Sprite2D" parent="."]
+modulate = Color(0.4, 0.121569, 0, 0.427451)
+position = Vector2(542, -310)
+scale = Vector2(0.585736, 0.585736)
+texture = ExtResource("6_31qwg")
+
+[node name="Paper" type="Sprite2D" parent="."]
+position = Vector2(32, -17)
+rotation = -0.120115
+scale = Vector2(0.415607, 0.415607)
+texture = ExtResource("7_vyo78")
+script = ExtResource("8_omfvp")
+
+[node name="Pen" type="Sprite2D" parent="."]
+position = Vector2(228, 153)
+rotation = 0.586248
+scale = Vector2(0.231828, 0.231828)
+texture = ExtResource("9_q7tps")
+script = ExtResource("10_iw04d")
+
+[node name="Label" type="Label" parent="Pen"]
+offset_left = -19.146
+offset_top = 2.35938
+offset_right = 289.854
+offset_bottom = 86.3594
+rotation = -1.5708
+theme_override_font_sizes/font_size = 28
+text = "Take care of your mind
+online.md"
+horizontal_alignment = 1
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Pen"]
+stream = ExtResource("11_00eei")
+
+[node name="MilkShake" type="Sprite2D" parent="."]
+position = Vector2(538.135, -317.857)
+rotation = 1.83161
+scale = Vector2(0.636177, 0.636177)
+texture = ExtResource("12_ahx2s")
+offset = Vector2(51.9763, -12.9835)
+script = ExtResource("10_iw04d")
+initialVisibility = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="MilkShake"]
+stream = ExtResource("13_mxpit")
+volume_db = -6.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -156.0
+offset_top = -259.0
+offset_right = 206.0
+offset_bottom = 271.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -0.120115
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = SubResource("SystemFont_61q0o")
+bbcode_enabled = true
+text = "Dear diary,
+
+today I went out to bowl and relax and
+I beat my own high-score! I was so
+happy!
+
+But the guy next lane had an even
+higher score than me and was super
+smug about it. Man, [color=0a0000]he made me
+so mad![/color]
+
+But I took a deep breath, counted to ten
+and thought about [color=0a0000]bowling[/color], just like
+Dr. Gutter said.
+
+And everything was fine [color=0a0000]:D[/color]"
+script = ExtResource("14_6v14i")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+script = ExtResource("15_nf78t")
+finalZoom = 1.25
+followDistance = 0.5
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="NextLevelButton" parent="CanvasLayer" instance=ExtResource("16_wlvvl")]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("17_f1q7p")
+volume_db = 12.0

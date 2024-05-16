@@ -1,6 +1,7 @@
-[gd_scene load_steps=18 format=3 uid="uid://do5fuqb4cvmoi"]
+[gd_scene load_steps=19 format=3 uid="uid://do5fuqb4cvmoi"]
 
 [ext_resource type="Script" path="res://levels/level.gd" id="1_wpwwk"]
+[ext_resource type="PackedScene" uid="uid://hd0xft3vjqd2" path="res://levels/monologues/2/monologue_2.tscn" id="2_p500m"]
 [ext_resource type="PackedScene" uid="uid://b3do053hjw4au" path="res://ui/interface.tscn" id="2_xbxmn"]
 [ext_resource type="PackedScene" uid="uid://dckk6sbjqpphn" path="res://ball/bowling_ball.tscn" id="4_x1hak"]
 [ext_resource type="Texture2D" uid="uid://cavoy28nrfmm5" path="res://levels/1/bowling_range_pixelated.png" id="6_13cap"]
@@ -8,8 +9,8 @@
 [ext_resource type="AudioStream" uid="uid://bcelxwb03nfv8" path="res://sound/box.mp3" id="8_8gga4"]
 [ext_resource type="PackedScene" uid="uid://droyil2h36vr5" path="res://ui/level_camera.tscn" id="8_xu1bx"]
 [ext_resource type="AudioStream" uid="uid://pg322ckopdnp" path="res://sound/stick.mp3" id="9_gm3lq"]
-[ext_resource type="PackedScene" uid="uid://d0yje34o5stev" path="res://pin/police_pin.tscn" id="10_vbpoh"]
-[ext_resource type="PackedScene" uid="uid://dtld21m2sdk3h" path="res://pin/shield_pin.tscn" id="11_a4nhu"]
+[ext_resource type="PackedScene" uid="uid://cnladn1nub7hi" path="res://pin/bowling_pin.tscn" id="10_ye86a"]
+[ext_resource type="Texture2D" uid="uid://btc6k6iuaing3" path="res://pin/emotions/surprised.png" id="11_aub2e"]
 [ext_resource type="AudioStream" uid="uid://b82si8o5i461m" path="res://sound/bowlingSamba.mp3" id="11_nqroa"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hfcy0"]
@@ -32,6 +33,7 @@ size = Vector2(10589, 1230)
 
 [node name="Level1" type="Node2D"]
 script = ExtResource("1_wpwwk")
+nextScene = ExtResource("2_p500m")
 
 [node name="Interface" parent="." instance=ExtResource("2_xbxmn")]
 
@@ -152,8 +154,6 @@ script = ExtResource("7_uwri8")
 position = Vector2(-261, -19517)
 shape = SubResource("RectangleShape2D_y2wqj")
 
-[node name="PolicePin" parent="." instance=ExtResource("10_vbpoh")]
-position = Vector2(-941, 1505)
-
-[node name="ShieldPin" parent="." instance=ExtResource("11_a4nhu")]
-position = Vector2(1478, 1503)
+[node name="BowlingPin" parent="." instance=ExtResource("10_ye86a")]
+position = Vector2(245, 1517)
+idleExpression = ExtResource("11_aub2e")

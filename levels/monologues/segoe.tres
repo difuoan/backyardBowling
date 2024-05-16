@@ -1,0 +1,4 @@
+[gd_resource type="SystemFont" format=3 uid="uid://yskla5badkuu"]
+
+[resource]
+font_names = PackedStringArray("Segoe Script")

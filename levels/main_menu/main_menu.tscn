@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://levels/main_menu/main_menu.gd" id="1_50uic"]
 [ext_resource type="AudioStream" uid="uid://bvfdlpoxa8dut" path="res://sound/Bowling sound effects ultimate collection.mp3" id="2_ipvgo"]
 [ext_resource type="Script" path="res://levels/main_menu/mainMenuCameraTarget.gd" id="2_knek6"]
-[ext_resource type="PackedScene" uid="uid://c5qwj2f2jgum2" path="res://levels/monologues/monologue_1.tscn" id="2_ldc1m"]
+[ext_resource type="PackedScene" uid="uid://c5qwj2f2jgum2" path="res://levels/monologues/1/monologue_1.tscn" id="2_ldc1m"]
 [ext_resource type="Script" path="res://levels/level_camera.gd" id="4_qmnwt"]
 
 [node name="MainMenu" type="Node2D"]
