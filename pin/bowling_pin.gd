@@ -15,12 +15,14 @@ signal died(body: Node2D)
 @export var idleExpression: Texture2D = preload("res://pin/emotions/calm.png")
 @export var painExpression: Texture2D = preload("res://pin/emotions/angry.png")
 @export var horrifiedExpression: Texture2D = preload("res://pin/emotions/horrified.png")
+@export var scepticalExpression: Texture2D = preload("res://pin/emotions/sceptical.png")
 @export var hitSound: AudioStream = preload("res://sound/pinHit.mp3")
 
 @onready var animationTree: AnimationTree = $AnimationTree
 @onready var stateMachine: AnimationNodeStateMachinePlayback = animationTree["parameters/playback"]
 @onready var idleExpressionSprite: Sprite2D = $IdleExpression
 @onready var painExpressionSprite: Sprite2D = $PainExpression
+@onready var scepticalExpressionSprite: Sprite2D = $ScepticalExpression
 @onready var horrifiedExpressionSprite: Sprite2D = $HorrifiedExpression
 @onready var collisionPolygon: CollisionPolygon2D = $CollisionPolygon2D
 @onready var horrifiedArea: Area2D = $HorrifiedArea
@@ -89,6 +91,7 @@ func setExpressions() -> void:
 	if idleExpression: idleExpressionSprite.texture = idleExpression
 	if painExpression: painExpressionSprite.texture = painExpression
 	if horrifiedExpression: horrifiedExpressionSprite.texture = horrifiedExpression
+	if scepticalExpression: scepticalExpressionSprite.texture = scepticalExpression
 
 func addAudioPlayer() -> void:
 	hitAudioPlayer = AudioStreamPlayer.new()

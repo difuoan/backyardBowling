@@ -40,16 +40,16 @@ autoplay = true
 
 [node name="Background" type="Sprite2D" parent="."]
 z_index = -30
-position = Vector2(0, 991.5)
-scale = Vector2(25.8524, 19.017)
+position = Vector2(0, 2465)
+scale = Vector2(14.4202, 10.6075)
 texture = ExtResource("5_hjcqk")
 
 [node name="BowlingBall" parent="." instance=ExtResource("6_ffbno")]
-position = Vector2(-7012, 3818)
+position = Vector2(-4364, 3818)
 
 [node name="Ceiling" type="StaticBody2D" parent="."]
 z_index = -20
-position = Vector2(-181, -2497)
+position = Vector2(-181, 386)
 script = ExtResource("7_cci8h")
 hitSound = ExtResource("8_6yl7r")
 
@@ -59,7 +59,7 @@ shape = SubResource("RectangleShape2D_rowa1")
 
 [node name="WallLeft" type="StaticBody2D" parent="."]
 z_index = -20
-position = Vector2(-5280, 839)
+position = Vector2(-1222, 839)
 script = ExtResource("7_cci8h")
 hitSound = ExtResource("8_6yl7r")
 
@@ -69,7 +69,7 @@ shape = SubResource("RectangleShape2D_vucgw")
 
 [node name="WallRight" type="StaticBody2D" parent="."]
 z_index = -20
-position = Vector2(5271, 928)
+position = Vector2(1149, 928)
 script = ExtResource("7_cci8h")
 hitSound = ExtResource("8_6yl7r")
 
@@ -90,6 +90,7 @@ shape = SubResource("RectangleShape2D_gyxqc")
 position = Vector2(3299, 3752)
 rotation = 1.5708
 horrifiedExpression = ExtResource("10_s52bg")
+scepticalExpression = ExtResource("10_s52bg")
 
 [node name="Trashcan" parent="." instance=ExtResource("11_oig4q")]
 position = Vector2(2054, 3629)
