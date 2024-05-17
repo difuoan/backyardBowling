@@ -1,0 +1,95 @@
+[gd_scene load_steps=16 format=3 uid="uid://uhp8h1e0f52x"]
+
+[ext_resource type="Script" path="res://levels/level.gd" id="1_d0kur"]
+[ext_resource type="PackedScene" uid="uid://b3do053hjw4au" path="res://ui/interface.tscn" id="2_tm61d"]
+[ext_resource type="PackedScene" uid="uid://droyil2h36vr5" path="res://ui/level_camera.tscn" id="3_0e1jv"]
+[ext_resource type="AudioStream" uid="uid://b82si8o5i461m" path="res://sound/bowlingSamba.mp3" id="4_emy6v"]
+[ext_resource type="Texture2D" uid="uid://dhp6x8vnvgef4" path="res://levels/2/f8c160e446a8cfac71e597712ebb02f0.jpg" id="5_hjcqk"]
+[ext_resource type="PackedScene" uid="uid://dckk6sbjqpphn" path="res://ball/bowling_ball.tscn" id="6_ffbno"]
+[ext_resource type="Script" path="res://levels/background.gd" id="7_cci8h"]
+[ext_resource type="AudioStream" uid="uid://bcelxwb03nfv8" path="res://sound/box.mp3" id="8_6yl7r"]
+[ext_resource type="PackedScene" uid="uid://cnladn1nub7hi" path="res://pin/bowling_pin.tscn" id="9_ietkc"]
+[ext_resource type="Texture2D" uid="uid://2370v71yy3cx" path="res://pin/emotions/calm.png" id="10_s52bg"]
+[ext_resource type="PackedScene" uid="uid://cgp5jaul718g7" path="res://scenery/trashcan.tscn" id="11_oig4q"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rowa1"]
+size = Vector2(24728, 5590)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vucgw"]
+size = Vector2(5111, 10672)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_no0nw"]
+size = Vector2(5440, 14112)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gyxqc"]
+size = Vector2(29200, 3664)
+
+[node name="level2" type="Node2D"]
+script = ExtResource("1_d0kur")
+
+[node name="Interface" parent="." instance=ExtResource("2_tm61d")]
+
+[node name="LevelCamera" parent="." instance=ExtResource("3_0e1jv")]
+position = Vector2(-158, 950)
+zoom = Vector2(0.128, 0.128)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_emy6v")
+volume_db = -6.0
+autoplay = true
+
+[node name="Background" type="Sprite2D" parent="."]
+z_index = -30
+position = Vector2(0, 991.5)
+scale = Vector2(25.8524, 19.017)
+texture = ExtResource("5_hjcqk")
+
+[node name="BowlingBall" parent="." instance=ExtResource("6_ffbno")]
+position = Vector2(-7012, 3818)
+
+[node name="Ceiling" type="StaticBody2D" parent="."]
+z_index = -20
+position = Vector2(-181, -2497)
+script = ExtResource("7_cci8h")
+hitSound = ExtResource("8_6yl7r")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ceiling"]
+position = Vector2(-1828, -2350)
+shape = SubResource("RectangleShape2D_rowa1")
+
+[node name="WallLeft" type="StaticBody2D" parent="."]
+z_index = -20
+position = Vector2(-5280, 839)
+script = ExtResource("7_cci8h")
+hitSound = ExtResource("8_6yl7r")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WallLeft"]
+position = Vector2(-6553.5, 551)
+shape = SubResource("RectangleShape2D_vucgw")
+
+[node name="WallRight" type="StaticBody2D" parent="."]
+z_index = -20
+position = Vector2(5271, 928)
+script = ExtResource("7_cci8h")
+hitSound = ExtResource("8_6yl7r")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WallRight"]
+position = Vector2(6836, -1482)
+shape = SubResource("RectangleShape2D_no0nw")
+
+[node name="Floor" type="StaticBody2D" parent="."]
+z_index = -20
+position = Vector2(76, 22318)
+script = ExtResource("7_cci8h")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
+position = Vector2(167, -16416)
+shape = SubResource("RectangleShape2D_gyxqc")
+
+[node name="BowlingPin" parent="." instance=ExtResource("9_ietkc")]
+position = Vector2(3299, 3752)
+rotation = 1.5708
+horrifiedExpression = ExtResource("10_s52bg")
+
+[node name="Trashcan" parent="." instance=ExtResource("11_oig4q")]
+position = Vector2(2054, 3629)

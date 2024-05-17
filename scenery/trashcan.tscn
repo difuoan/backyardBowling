@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://cgp5jaul718g7"]
+
+[ext_resource type="Texture2D" uid="uid://caocwlnyg7jr0" path="res://scenery/pngtree-old-rusty-metal-trash-can-png-image_11973565.png" id="1_dpihj"]
+
+[node name="Trashcan" type="RigidBody2D"]
+mass = 10.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -79)
+scale = Vector2(2, 3)
+texture = ExtResource("1_dpihj")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+position = Vector2(0, -79)
+scale = Vector2(2, 3)
+polygon = PackedVector2Array(0, -156, 43, -153, 129, -90, 123, -60, 134, -30, 117, -8, 104, 164, -118, 164, -129, -8, -148, -29, -135, -62, -142, -85, -133, -135, -77, -133, -84, -189, -50, -162, -28, -185)
