@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://dno4tinvl5vvn"]
+
+[ext_resource type="Texture2D" uid="uid://baaqkxwk5qmyy" path="res://effects/www.pngall.png" id="1_wue1x"]
+
+[sub_resource type="Curve" id="Curve_m6lc3"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_t8l65"]
+curve = SubResource("Curve_m6lc3")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_bharv"]
+particle_flag_disable_z = true
+gravity = Vector3(0, -250, 0)
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+scale_min = 0.1
+scale_max = 0.1
+scale_curve = SubResource("CurveTexture_t8l65")
+turbulence_enabled = true
+turbulence_noise_strength = 5.0
+turbulence_noise_scale = 5.0
+turbulence_noise_speed_random = 0.25
+
+[node name="zzz" type="GPUParticles2D"]
+amount = 3
+process_material = SubResource("ParticleProcessMaterial_bharv")
+texture = ExtResource("1_wue1x")
+lifetime = 5.0
