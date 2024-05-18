@@ -91,6 +91,7 @@ position = Vector2(3299, 3752)
 rotation = 1.5708
 horrifiedExpression = ExtResource("10_s52bg")
 scepticalExpression = ExtResource("10_s52bg")
+initialState = "asleep"
 
 [node name="Trashcan" parent="." instance=ExtResource("11_oig4q")]
 position = Vector2(2054, 3629)

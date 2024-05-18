@@ -17,6 +17,7 @@ signal died(body: Node2D)
 @export var horrifiedExpression: Texture2D = preload("res://pin/emotions/horrified.png")
 @export var scepticalExpression: Texture2D = preload("res://pin/emotions/sceptical.png")
 @export var hitSound: AudioStream = preload("res://sound/pinHit.mp3")
+@export var initialState: String = "idle"
 
 @onready var animationTree: AnimationTree = $AnimationTree
 @onready var stateMachine: AnimationNodeStateMachinePlayback = animationTree["parameters/playback"]
@@ -84,7 +85,9 @@ func activateAnimations() -> void:
 	animationTree.active = true
 	animationTree.set("parameters/conditions/isNotDead", true)
 	animationTree.set("parameters/conditions/isDead", false)
-	await get_tree().create_timer(0.1).timeout
+	if initialState:
+		stateMachine.travel(initialState)
+#	await get_tree().create_timer(0.1).timeout # needed for difference in animations?
 	animationTree.advance(randf_range(0.0, 4.0))
 
 func setExpressions() -> void:
