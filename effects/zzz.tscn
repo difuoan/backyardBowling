@@ -3,8 +3,8 @@
 [ext_resource type="Texture2D" uid="uid://baaqkxwk5qmyy" path="res://effects/www.pngall.png" id="1_wue1x"]
 
 [sub_resource type="Curve" id="Curve_m6lc3"]
-_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
-point_count = 2
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.497253, 1), 0.0, 0.0, 0, 0, Vector2(0.99999, 0), 0.0, 0.0, 0, 0]
+point_count = 3
 
 [sub_resource type="CurveTexture" id="CurveTexture_t8l65"]
 curve = SubResource("Curve_m6lc3")
@@ -23,7 +23,7 @@ turbulence_noise_scale = 5.0
 turbulence_noise_speed_random = 0.25
 
 [node name="zzz" type="GPUParticles2D"]
-amount = 3
+amount = 4
 process_material = SubResource("ParticleProcessMaterial_bharv")
 texture = ExtResource("1_wue1x")
-lifetime = 5.0
+lifetime = 10.0

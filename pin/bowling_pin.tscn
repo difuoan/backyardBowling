@@ -1,6 +1,7 @@
-[gd_scene load_steps=34 format=3 uid="uid://cnladn1nub7hi"]
+[gd_scene load_steps=42 format=3 uid="uid://cnladn1nub7hi"]
 
 [ext_resource type="Script" path="res://pin/bowling_pin.gd" id="1_2i15v"]
+[ext_resource type="PackedScene" uid="uid://dno4tinvl5vvn" path="res://effects/zzz.tscn" id="2_dotyb"]
 [ext_resource type="Texture2D" uid="uid://xnjur5dqtm2h" path="res://pin/3d-icon-illustration-pin-bowling-free-png-1317876159.png" id="5_djk0r"]
 [ext_resource type="Texture2D" uid="uid://2370v71yy3cx" path="res://pin/emotions/calm.png" id="6_dgg7x"]
 [ext_resource type="Material" uid="uid://bivw4uv7uucn1" path="res://effects/maskMaterial.tres" id="6_p5iau"]
@@ -9,6 +10,9 @@
 [ext_resource type="Texture2D" uid="uid://ncac5n154axw" path="res://pin/emotions/sceptical.png" id="9_lfe8t"]
 [ext_resource type="Texture2D" uid="uid://16pojryy3tlo" path="res://pin/emotions/dead.png" id="9_v3smo"]
 [ext_resource type="Texture2D" uid="uid://cvh27fgvfpeo2" path="res://pin/pin_mask.png" id="11_64qxk"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_jkknd"]
+animation = &"asleep"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_xj3ys"]
 animation = &"dead"
@@ -50,21 +54,33 @@ advance_condition = &"isDead"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_y3c72"]
 
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_eqqfa"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_rob8a"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_tqkw2"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_hq0ba"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_3dg11"]
+
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_0bowt"]
-states/End/position = Vector2(701, 100)
+states/End/position = Vector2(1002, 100)
 states/Start/position = Vector2(167, 100)
+states/asleep/node = SubResource("AnimationNodeAnimation_jkknd")
+states/asleep/position = Vector2(431, -67)
 states/dead/node = SubResource("AnimationNodeAnimation_xj3ys")
-states/dead/position = Vector2(701, -10)
+states/dead/position = Vector2(1002, -10)
 states/horror/node = SubResource("AnimationNodeAnimation_k1wxf")
-states/horror/position = Vector2(545, 100)
+states/horror/position = Vector2(892, 100)
 states/idle/node = SubResource("AnimationNodeAnimation_01tnf")
-states/idle/position = Vector2(318, 100)
+states/idle/position = Vector2(328, 100)
 states/pain/node = SubResource("AnimationNodeAnimation_8pr64")
-states/pain/position = Vector2(545, -10)
+states/pain/position = Vector2(892, -5)
 states/sceptical/node = SubResource("AnimationNodeAnimation_htif5")
-states/sceptical/position = Vector2(318, -10)
-transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_p1758"), "idle", "pain", SubResource("AnimationNodeStateMachineTransition_cbsin"), "idle", "horror", SubResource("AnimationNodeStateMachineTransition_c55lr"), "pain", "horror", SubResource("AnimationNodeStateMachineTransition_aso2l"), "pain", "dead", SubResource("AnimationNodeStateMachineTransition_oity6"), "horror", "pain", SubResource("AnimationNodeStateMachineTransition_0aqof"), "idle", "sceptical", SubResource("AnimationNodeStateMachineTransition_j3yqy"), "sceptical", "pain", SubResource("AnimationNodeStateMachineTransition_bjpal"), "sceptical", "horror", SubResource("AnimationNodeStateMachineTransition_y3c72")]
-graph_offset = Vector2(-51, -50)
+states/sceptical/position = Vector2(504, 19)
+transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_p1758"), "idle", "pain", SubResource("AnimationNodeStateMachineTransition_cbsin"), "idle", "horror", SubResource("AnimationNodeStateMachineTransition_c55lr"), "pain", "horror", SubResource("AnimationNodeStateMachineTransition_aso2l"), "pain", "dead", SubResource("AnimationNodeStateMachineTransition_oity6"), "horror", "pain", SubResource("AnimationNodeStateMachineTransition_0aqof"), "idle", "sceptical", SubResource("AnimationNodeStateMachineTransition_j3yqy"), "sceptical", "pain", SubResource("AnimationNodeStateMachineTransition_bjpal"), "sceptical", "horror", SubResource("AnimationNodeStateMachineTransition_y3c72"), "idle", "asleep", SubResource("AnimationNodeStateMachineTransition_eqqfa"), "asleep", "idle", SubResource("AnimationNodeStateMachineTransition_rob8a"), "asleep", "sceptical", SubResource("AnimationNodeStateMachineTransition_tqkw2"), "asleep", "pain", SubResource("AnimationNodeStateMachineTransition_hq0ba"), "asleep", "horror", SubResource("AnimationNodeStateMachineTransition_3dg11")]
+graph_offset = Vector2(-1, -69)
 
 [sub_resource type="Animation" id="Animation_54eg7"]
 length = 0.001
@@ -164,6 +180,18 @@ tracks/7/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("zzz:visible")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_cx1xw"]
 resource_name = "dead"
@@ -222,6 +250,18 @@ tracks/4/path = NodePath("ScepticalExpression:visible")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("zzz:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
@@ -316,6 +356,18 @@ tracks/6/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("zzz:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_yuqpu"]
 resource_name = "idle"
@@ -393,6 +445,18 @@ tracks/5/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("zzz:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_tcm5k"]
 resource_name = "pain"
@@ -440,6 +504,18 @@ tracks/3/path = NodePath("ScepticalExpression:visible")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("zzz:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
@@ -522,10 +598,112 @@ tracks/5/keys = {
 "update": 1,
 "values": [true]
 }
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("zzz:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_i8dwb"]
+resource_name = "asleep"
+length = 4.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("IdleExpression:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PainExpression:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("HorrifiedExpression:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("IdleExpression:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.9, 1.8, 2, 2.9, 3.8, 4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(38, -908.484), Vector2(38, -918.484), Vector2(38, -908.484), Vector2(-22, -908.484), Vector2(-22, -918.484), Vector2(-22, -908.484), Vector2(38, -908.484)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("IdleExpression:flip_h")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 1.9, 3.9),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("ScepticalExpression:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("zzz:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_m2fkm"]
 _data = {
 "RESET": SubResource("Animation_54eg7"),
+"asleep": SubResource("Animation_i8dwb"),
 "dead": SubResource("Animation_cx1xw"),
 "horror": SubResource("Animation_mt6l6"),
 "idle": SubResource("Animation_yuqpu"),
@@ -549,6 +727,10 @@ max_contacts_reported = 50
 contact_monitor = true
 can_sleep = false
 script = ExtResource("1_2i15v")
+
+[node name="zzz" parent="." instance=ExtResource("2_dotyb")]
+visible = false
+position = Vector2(1, -916)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, -215.484)
